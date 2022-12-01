@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<link href="style.css" rel="stylesheet" type="text/css"/>
+		<script src="script.js"></script>
+	</head>
+	<body onload = "initialize();">
+    <div id = "sectionContainer">
+      <div id = "groceryListSection">
+        <h1>Your Grocery List</h1>
+        <div id = "groceryList">
+          
+        </div>
+        <button class = "button" id = "addItemButton">Add Item</button>
+      </div>
+      
+      <div id = "editListSection">
+        <h1>Edit Your List</h1>
+        <span>Selected Item: </span>
+        <label>
+          <input type = "number" id = "selectedItem" placeholder = "Enter the item number">
+        </label>
+        <label>
+          <input type = "submit" id = "submitButton">
+        </label>
+        <h3 id = "currentItemLabel">Current Item Name Selected: </h3>
+        <div>
+          <button class = "button" id = "deleteItemButton">Delete Item</button>
+        </div>
+        <div>
+          <button class = "button" id = "moveUpButton">Move Item Up List</button>
+        </div>
+        <div>
+          <button class = "button" id = "moveDownButton">Move Item Down List</button>
+        </div>
+        <div>
+          <button class = "button" id = "changeQuantityButton">Change Quantity</button>
+        </div>
+        <img id = "logo" src = "logo.png">
+      </div>
+    </div>
+	</body>
+</html>
