@@ -6,19 +6,19 @@ body {
   display: flex;
   width: 100%;
   height: 100vh;
+  flex-direction: row;
+  text-align: center;
 }
 #groceryListSection {
   width: 60%;
   height: 100%;
   background-color: #daf2e8;
-  text-align: center;
   border-style: none solid none none;
 }
 #editListSection {
   width: 40%;
   height: 100%;
   background-color: #dff2ea;
-  text-align: center;
 }
 #groceryList {
   margin: auto;
@@ -69,4 +69,15 @@ input::placeholder {
   bottom: 0;
   padding-right: 1%;
   padding-bottom: 1%;
+}
+
+#musicToggle {
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  height: 8%;
+  width: auto;
+  cursor: pointer;
 }
