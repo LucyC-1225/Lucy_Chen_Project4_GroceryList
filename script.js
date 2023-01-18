@@ -1,27 +1,26 @@
 const groceryListNameArr = [];
 const groceryListQuantityArr = [];
-let currentSelectedItemName, currentSelectedItemNumIndex, numItemShifts, selectedItem, groceryList, addItemButton, deleteItemButton, moveUpButton, moveDownButton, changeQuantityButton, submitButton, currentItemLabel;
+let currentSelectedItemName, currentSelectedItemNumIndex, numItemShifts, selectedItem, groceryList, addItemButton, deleteItemButton, moveUpButton, moveDownButton, changeQuantityButton, submitButton, currentItemLabel, soundOn, musicToggle, audio;
 
 function initialize() {
   currentSelectedItemName = ""; //does not change even when the item is moved up or down
   currentSelectedItemNumIndex = -1; //this changes when the item moves up or down
 
-  selectedItem = document.getElementById("selectedItem");
-  groceryList = document.getElementById("groceryList");
-  addItemButton = document.getElementById("addItemButton");
-  deleteItemButton = document.getElementById("deleteItemButton");
-  moveUpButton = document.getElementById("moveUpButton");
-  moveDownButton = document.getElementById("moveDownButton");
-  changeQuantityButton = document.getElementById("changeQuantityButton");
-  submitButton = document.getElementById("submitButton");
-  currentItemLabel = document.getElementById("currentItemLabel");
+  selectedItem = document.querySelector("#selectedItem");
+  groceryList = document.querySelector("#groceryList");
+  addItemButton = document.querySelector("#addItemButton");
+  deleteItemButton = document.querySelector("#deleteItemButton");
+  moveUpButton = document.querySelector("#moveUpButton");
+  moveDownButton = document.querySelector("#moveDownButton");
+  changeQuantityButton = document.querySelector("#changeQuantityButton");
+  submitButton = document.querySelector("#submitButton");
+  currentItemLabel = document.querySelector("#currentItemLabel");
 
-  //Put this on the bottom of the body? Why tho, it'll only execute if there is a click
+  submitButton.addEventListener("click", updateCurrentSelectedItem);
   addItemButton.addEventListener("click", addItemToList);
   deleteItemButton.addEventListener("click", deleteItemFromList);
   moveUpButton.addEventListener("click", moveItemUp);
   moveDownButton.addEventListener("click", moveItemDown);
-  submitButton.addEventListener("click", updateCurrentSelectedItem);
   changeQuantityButton.addEventListener("click", () => {
     if (currentSelectedItemNumIndex === -1) {
       alert("There is no item selected");
@@ -31,6 +30,10 @@ function initialize() {
     }
     updateGroceryListDisplay();
   });
+
+  soundOn = false;
+  musicToggle = document.querySelector("#musicToggle");
+  audio = document.querySelector("#audio");
 }
 
 function moveItemDown() {
@@ -87,7 +90,6 @@ function updateCurrentSelectedItem() {
     //updates label with name
     currentItemLabel.innerHTML = `Current Item Name Selected: ${currentSelectedItemName}`;
   }
-  
 }
 function isSelectedNumValid(num) {
   if (num >= groceryListNameArr.length || num < 0) {
@@ -97,7 +99,6 @@ function isSelectedNumValid(num) {
   return true;
 }
 function addItemToList() {
-  //add code for checking for duplicates and to see if it is a number
   let newItemName = prompt("Enter the name of your new item:");
   let newItemQuantity = prompt("Enter the quantity of your new item:");
 
@@ -105,6 +106,8 @@ function addItemToList() {
   if (!(newItemName === null || newItemName === "" || newItemQuantity === null || newItemQuantity === "")) {
     groceryListNameArr.push(newItemName);
     groceryListQuantityArr.push(newItemQuantity);
+  } else {
+    alert("Item unsuccessfully added. Please enter a valid name and/or quantity");
   }
   console.log(groceryListNameArr);
   console.log(groceryListQuantityArr);
@@ -126,5 +129,19 @@ function updateGroceryListDisplay() {
     let h3 = document.createElement('h3');
     groceryList.appendChild(h3);
     h3.innerHTML = generateElementText();
+  }
+}
+
+function toggleSoundOnOff() {
+  if (soundOn === true) {
+    musicToggle.src = "/Images/musicOff.png";
+    soundOn = false;
+    audio.pause();
+    console.log("soundOn: ", soundOn);
+  } else if (soundOn === false) {
+    musicToggle.src = "/Images/musicOn.png";
+    soundOn = true;
+    audio.play();
+    console.log("soundOn: ", soundOn);
   }
 }
