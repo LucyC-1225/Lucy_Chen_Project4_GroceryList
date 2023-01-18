@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title></title>
+		<title>Level 4 Grocery List</title>
 		<link href="style.css" rel="stylesheet" type="text/css"/>
 		<script src="script.js"></script>
 	</head>
@@ -24,6 +24,7 @@
         <label>
           <input type = "submit" id = "submitButton">
         </label>
+        
         <h3 id = "currentItemLabel">Current Item Name Selected: </h3>
         <div>
           <button class = "button" id = "deleteItemButton">Delete Item</button>
@@ -37,7 +38,19 @@
         <div>
           <button class = "button" id = "changeQuantityButton">Change Quantity</button>
         </div>
-        <img id = "logo" src = "logo.png">
+
+        <video width="320" height="200" autoplay muted loop controls>
+          <!-- https://drive.google.com/uc?id=1-Aew-Qcpo6t-ONTE5Eyp5YlkS_ymtuc0 -->
+          <source src="Media/video.mp4">
+        </video>
+
+        <!-- https://drive.google.com/uc?id=1DUAXRVexlZtFsOm82rsQ2GqAIaTx_m54 -->
+        <audio id = "audio" hidden loop>
+          <source src="Media/backgroundMusic.mp3"></source>
+        </audio>
+        
+        <a onclick="toggleSoundOnOff();"><img id="musicToggle" src="Images/musicOff.png"></a>
+        <img id = "logo" src = "Images/logo.png">
       </div>
     </div>
 	</body>
