@@ -137,11 +137,9 @@ function toggleSoundOnOff() {
     musicToggle.src = "/Images/musicOff.png";
     soundOn = false;
     audio.pause();
-    console.log("soundOn: ", soundOn);
   } else if (soundOn === false) {
     musicToggle.src = "/Images/musicOn.png";
     soundOn = true;
     audio.play();
-    console.log("soundOn: ", soundOn);
   }
 }
